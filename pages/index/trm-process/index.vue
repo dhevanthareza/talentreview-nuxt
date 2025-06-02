@@ -63,12 +63,13 @@
                 <thead>
                   <tr>
                     <th class="text-center">No</th>
-                    <th>Action</th>
                     <th>Nopeg</th>
                     <th>Name</th>
                     <th>Posisi saat ini</th>
+                    <th>PRL</th>
                     <th>Lama</th>
                     <th>Nilai</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -77,6 +78,16 @@
                     :key="talent.id"
                   >
                     <td class="text-center">{{ startIndex + index + 1 }}</td>
+                    <td>{{ talent.nopeg }}</td>
+                    <td>{{ talent.name }}</td>
+                    <td>{{ talent.position }}</td>
+                    <td>{{ talent.prl }}</td>
+                    <td>
+                      <span class="text-muted">
+                        <i class="demo-pli-clock"></i> {{ talent.tenure }}
+                      </span>
+                    </td>
+                    <td class="text-right">{{ talent.scores.join(', ') }}</td>
                     <td class="text-center text-nowrap">
                       <NuxtLink
                         :to="`/trm-process/${talent.id}`"
@@ -85,15 +96,6 @@
                         <i class="pli-information fs-5"></i>
                       </NuxtLink>
                     </td>
-                    <td>{{ talent.nopeg }}</td>
-                    <td>{{ talent.name }}</td>
-                    <td>{{ talent.position }}</td>
-                    <td>
-                      <span class="text-muted">
-                        <i class="demo-pli-clock"></i> {{ talent.tenure }}
-                      </span>
-                    </td>
-                    <td class="text-right">{{ talent.scores.join(', ') }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -228,13 +230,13 @@ const loadTalents = () => {
       } else {
         // Mock data with correct position references
         talents.value = [
-          // Manager Channel Digitalization Operation
           {
             id: 1,
             nopeg: "12345",
             name: "Bambang Wijaya",
             position: "Manager Channel Digitalization Operation",
             positionId: "30313889",
+            prl: 19, // Added PRL
             tenure: "2 Tahun, 5 Bulan",
             scores: [7, 8, 8],
             competencies: ["HSSE General", "HC Integrated", "Strategic & Business Management", "Risk Fundamental"],
@@ -245,6 +247,7 @@ const loadTalents = () => {
             name: "Dewi Kusuma",
             position: "Manager Channel Digitalization Operation",
             positionId: "30313889",
+            prl: 18, // Added PRL
             tenure: "3 Tahun, 2 Bulan",
             scores: [8, 7, 8],
             competencies: ["HSSE General", "HC Integrated", "Strategic & Business Management", "Risk Fundamental"],
@@ -255,6 +258,7 @@ const loadTalents = () => {
             name: "Agus Santoso",
             position: "Manager Channel Digitalization Operation",
             positionId: "30313889",
+            prl: 17, // Added PRL
             tenure: "1 Tahun, 8 Bulan",
             scores: [6, 7, 7],
             competencies: ["HSSE General", "HC Integrated", "Strategic & Business Management", "Risk Fundamental"],
@@ -267,6 +271,7 @@ const loadTalents = () => {
             name: "Ratna Sari",
             position: "Sr Officer I Digital Operation",
             positionId: "30313894",
+            prl: 16, // Added PRL
             tenure: "2 Tahun, 1 Bulan",
             scores: [7, 7, 8],
             competencies: ["Digital Operation", "System Integration", "Business Process"],
@@ -277,6 +282,7 @@ const loadTalents = () => {
             name: "Budi Santoso",
             position: "Sr Officer I Digital Operation",
             positionId: "30313894",
+            prl: 15, // Added PRL
             tenure: "1 Tahun, 11 Bulan",
             scores: [6, 8, 7],
             competencies: ["Digital Operation", "System Integration", "Business Process"],
@@ -287,6 +293,7 @@ const loadTalents = () => {
             name: "Sri Wahyuni",
             position: "Sr Officer I Digital Operation",
             positionId: "30313894",
+            prl: 14, // Added PRL
             tenure: "2 Tahun, 3 Bulan",
             scores: [7, 7, 7],
             competencies: ["Digital Operation", "System Integration", "Business Process"],
@@ -299,6 +306,7 @@ const loadTalents = () => {
             name: "Andi Pratama",
             position: "Sr Officer II Digitalization Project",
             positionId: "30313890",
+            prl: 13, // Added PRL
             tenure: "1 Tahun, 6 Bulan",
             scores: [6, 7, 8],
             competencies: ["Project Management", "Digital Transformation", "Change Management"],
@@ -309,6 +317,7 @@ const loadTalents = () => {
             name: "Nina Wulandari",
             position: "Sr Officer II Digitalization Project",
             positionId: "30313890",
+            prl: 12, // Added PRL
             tenure: "2 Tahun, 4 Bulan",
             scores: [7, 8, 7],
             competencies: ["Project Management", "Digital Transformation", "Change Management"],
@@ -319,6 +328,7 @@ const loadTalents = () => {
             name: "Rudi Hermawan",
             position: "Sr Officer II Digitalization Project",
             positionId: "30313890",
+            prl: 11, // Added PRL
             tenure: "1 Tahun, 9 Bulan",
             scores: [7, 7, 8],
             competencies: ["Project Management", "Digital Transformation", "Change Management"],
@@ -331,6 +341,7 @@ const loadTalents = () => {
             name: "Siti Nurhayati",
             position: "Sr Officer I Support",
             positionId: "30313898",
+            prl: 10, // Added PRL
             tenure: "2 Tahun, 7 Bulan",
             scores: [6, 7, 7],
             competencies: ["Data Analysis", "Problem Solving", "Technical Support"],

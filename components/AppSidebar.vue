@@ -177,7 +177,7 @@ const menuItems = [
   },
   {
     id: "trm-process",
-    title: "Trm Process",
+    title: "TRM Process",
     icon: "pli-gear",
     route: "/trm-process",
     type: "link",
