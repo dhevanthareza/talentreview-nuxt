@@ -13,18 +13,15 @@ export default defineNuxtConfig({
     },
   },
   app: {
-    baseURL: "./",
-    buildAssetsDir: "./_nuxt/",
-    cdnURL: "./",
     head: {
       script: [
         {
           type: "text/javascript",
-          src: "./js/bootstrap.min.js",
+          src: "/js/bootstrap.min.js",
         },
         {
           type: "text/javascript",
-          src: "./js/style.js",
+          src: "/js/style.js",
         },
       ],
       link: [
