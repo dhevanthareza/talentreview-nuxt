@@ -170,7 +170,7 @@ const menuItems = [
     children: [
       {
         id: "review-start",
-        title: "Review Start",
+        title: "Review Star",
         route: "/review-star",
       },
     ],
