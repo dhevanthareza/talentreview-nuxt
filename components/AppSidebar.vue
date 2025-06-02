@@ -5,7 +5,7 @@
       <div class="header__brand">
         <div class="brand-wrap">
           <!-- Brand title -->
-          <div class="brand-title">STAR</div>
+          <div class="brand-title">STAR {{ userRole }}</div>
         </div>
       </div>
       <!-- End - Brand -->
@@ -36,7 +36,7 @@
           <ul class="mainnav__menu nav flex-column">
             <!-- Dynamic menu items -->
             <li
-              v-for="item in menuItems"
+              v-for="item in filteredMenuItems"
               :key="item.id"
               class="nav-item"
               :class="{ 'has-sub': item.type === 'submenu' }"
@@ -109,8 +109,9 @@
 <script setup>
 const route = useRoute();
 const { logout } = useAuth();
+const { userRole, loadUserRole } = useUserRole();
 
-// Menu data
+// Menu data with role-based visibility
 const menuItems = [
   {
     id: "home",
@@ -118,12 +119,14 @@ const menuItems = [
     icon: "pli-home",
     route: "/",
     type: "link",
+    roles: ["user", "supervisor", "committee"], // visible to all
   },
   {
     id: "profile",
     title: "Profile",
     icon: "pli-male",
     type: "submenu",
+    roles: ["user", "supervisor", "committee"], // visible to all
     children: [
       {
         id: "my-profile",
@@ -148,6 +151,7 @@ const menuItems = [
     icon: "pli-gear",
     route: "/aspiration",
     type: "link",
+    roles: ["user", "supervisor", "committee"], // visible to all
   },
   {
     id: "job-posting",
@@ -155,12 +159,14 @@ const menuItems = [
     icon: "pli-gear",
     route: "/job-posting",
     type: "link",
+    roles: ["user", "supervisor", "committee"], // visible to all
   },
   {
     id: "subordinat",
     title: "Subordinat",
     icon: "pli-gear",
     type: "submenu",
+    roles: ["supervisor"], // only visible to supervisors
     children: [
       {
         id: "review-start",
@@ -175,6 +181,7 @@ const menuItems = [
     icon: "pli-gear",
     route: "/trm-process",
     type: "link",
+    roles: ["committee"], // only visible to committee
   },
 ];
 
@@ -187,6 +194,11 @@ const bottomMenuItems = [
     action: "logout",
   },
 ];
+
+// Filter menu items based on user role
+const filteredMenuItems = computed(() => {
+  return menuItems.filter((item) => item.roles.includes(userRole.value));
+});
 
 // Track open submenus
 const openSubmenus = ref({});
@@ -226,6 +238,7 @@ watch(
 
 // Initialize
 onMounted(async () => {
+  loadUserRole()
   // Auto-open submenus for current route
   menuItems.forEach((item) => {
     if (

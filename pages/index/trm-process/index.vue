@@ -16,7 +16,6 @@
                 value="id"
                 label="name"
                 placeholder="Choose your category"
-                @change="filterTalents"
               />
             </div>
           </div>
@@ -29,7 +28,6 @@
                 :options="availableCompetencies"
                 :searchable="true"
                 placeholder="Select competencies"
-                @change="filterTalents"
               />
             </div>
           </div>
@@ -95,7 +93,7 @@
                         <i class="demo-pli-clock"></i> {{ talent.tenure }}
                       </span>
                     </td>
-                    <td class="text-right">{{ talent.score }}</td>
+                    <td class="text-right">{{ talent.scores.join(', ') }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -230,48 +228,114 @@ const loadTalents = () => {
       } else {
         // Mock data with correct position references
         talents.value = [
+          // Manager Channel Digitalization Operation
           {
             id: 1,
             nopeg: "12345",
-            name: "John Anderson",
+            name: "Bambang Wijaya",
             position: "Manager Channel Digitalization Operation",
             positionId: "30313889",
             tenure: "2 Tahun, 5 Bulan",
-            score: 875,
-            competencies: [
-              "HSSE General",
-              "HC Integrated",
-              "Strategic & Business Management",
-              "Risk Fundamental",
-            ],
+            scores: [7, 8, 8],
+            competencies: ["HSSE General", "HC Integrated", "Strategic & Business Management", "Risk Fundamental"],
           },
           {
             id: 2,
             nopeg: "12346",
-            name: "Sarah Mitchell",
-            position: "Sr Officer I Digital Operation",
-            positionId: "30313894",
+            name: "Dewi Kusuma",
+            position: "Manager Channel Digitalization Operation",
+            positionId: "30313889",
             tenure: "3 Tahun, 2 Bulan",
-            score: 920,
-            competencies: [
-              "Digital Operation",
-              "System Integration",
-              "Business Process",
-            ],
+            scores: [8, 7, 8],
+            competencies: ["HSSE General", "HC Integrated", "Strategic & Business Management", "Risk Fundamental"],
           },
           {
             id: 3,
             nopeg: "12347",
-            name: "Officer II Data Compliance",
-            positionId: "30313897",
+            name: "Agus Santoso",
+            position: "Manager Channel Digitalization Operation",
+            positionId: "30313889",
             tenure: "1 Tahun, 8 Bulan",
-            score: 780,
-            competencies: [
-              "Data Governance",
-              "Compliance Management",
-              "Risk Management",
-            ],
+            scores: [6, 7, 7],
+            competencies: ["HSSE General", "HC Integrated", "Strategic & Business Management", "Risk Fundamental"],
           },
+
+          // Sr Officer I Digital Operation
+          {
+            id: 4,
+            nopeg: "12348",
+            name: "Ratna Sari",
+            position: "Sr Officer I Digital Operation",
+            positionId: "30313894",
+            tenure: "2 Tahun, 1 Bulan",
+            scores: [7, 7, 8],
+            competencies: ["Digital Operation", "System Integration", "Business Process"],
+          },
+          {
+            id: 5,
+            nopeg: "12349",
+            name: "Budi Santoso",
+            position: "Sr Officer I Digital Operation",
+            positionId: "30313894",
+            tenure: "1 Tahun, 11 Bulan",
+            scores: [6, 8, 7],
+            competencies: ["Digital Operation", "System Integration", "Business Process"],
+          },
+          {
+            id: 6,
+            nopeg: "12350",
+            name: "Sri Wahyuni",
+            position: "Sr Officer I Digital Operation",
+            positionId: "30313894",
+            tenure: "2 Tahun, 3 Bulan",
+            scores: [7, 7, 7],
+            competencies: ["Digital Operation", "System Integration", "Business Process"],
+          },
+
+          // Sr Officer II Digitalization Project
+          {
+            id: 7,
+            nopeg: "12351",
+            name: "Andi Pratama",
+            position: "Sr Officer II Digitalization Project",
+            positionId: "30313890",
+            tenure: "1 Tahun, 6 Bulan",
+            scores: [6, 7, 8],
+            competencies: ["Project Management", "Digital Transformation", "Change Management"],
+          },
+          {
+            id: 8,
+            nopeg: "12352",
+            name: "Nina Wulandari",
+            position: "Sr Officer II Digitalization Project",
+            positionId: "30313890",
+            tenure: "2 Tahun, 4 Bulan",
+            scores: [7, 8, 7],
+            competencies: ["Project Management", "Digital Transformation", "Change Management"],
+          },
+          {
+            id: 9,
+            nopeg: "12353",
+            name: "Rudi Hermawan",
+            position: "Sr Officer II Digitalization Project",
+            positionId: "30313890",
+            tenure: "1 Tahun, 9 Bulan",
+            scores: [7, 7, 8],
+            competencies: ["Project Management", "Digital Transformation", "Change Management"],
+          },
+
+          // Sr Officer I Support
+          {
+            id: 10,
+            nopeg: "12354",
+            name: "Siti Nurhayati",
+            position: "Sr Officer I Support",
+            positionId: "30313898",
+            tenure: "2 Tahun, 7 Bulan",
+            scores: [6, 7, 7],
+            competencies: ["Data Analysis", "Problem Solving", "Technical Support"],
+          },
+          // Add more entries following the same pattern for each position...
         ];
         localStorage.setItem("trm-talents", JSON.stringify(talents.value));
       }
@@ -283,18 +347,33 @@ const loadTalents = () => {
   }
 };
 
-// Update filter to use positionId instead of category
+// Watch for category changes
+watch(selectedCategory, (newCategory) => {
+  if (newCategory) {
+    // Auto-select all competencies for selected job category
+    selectedCompetencies.value = competenciesMap[newCategory] || [];
+  } else {
+    // Reset competencies when category is cleared
+    selectedCompetencies.value = [];
+  }
+});
+
+// Remove @change="filterTalents" from both Multiselect components
+// Only filter when Search button is clicked
 const filterTalents = () => {
   let filtered = [...talents.value];
 
   if (selectedCategory.value) {
     filtered = filtered.filter(
-      (t) => t.positionId === selectedCategory.value.value
+      (t) => t.positionId === selectedCategory.value
     );
   }
 
   if (minValue.value) {
-    filtered = filtered.filter((t) => t.score >= parseInt(minValue.value));
+    filtered = filtered.filter(
+      (t) =>
+        (t.scores.reduce((a, b) => a + b, 0) / t.scores.length) >= parseInt(minValue.value)
+    );
   }
 
   if (selectedCompetencies.value.length > 0) {
@@ -341,6 +420,8 @@ const changePage = (page) => {
 // Initialize
 onMounted(() => {
   loadTalents();
+  // Don't call filterTalents here anymore
+  filteredTalents.value = talents.value;
 });
 
 useHead({
