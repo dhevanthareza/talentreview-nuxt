@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   css: [
     "~/assets/css/bootstrap.min.css", // Your custom CSS file
     "~/assets/css/style.css", // Your custom CSS file
+    "~/assets/css/tags.min.css", // Your custom CSS file
   ],
   router: {
     options: {

@@ -73,3 +73,22 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+talent review
+- new menu
+- model nya filter 
+- sumber data excel 
+
+sub ordinat
+- dibawah menu job posting
+- sub menu nya ada reveiew star
+- kaya list of star tapi ada kolom tambahan nama
+- kalo di klik status nya ngarah ke supervisi-form, yang submitted keluar approve reject, lainya gak keluar, skill competency ambol dari excel
+- 
+
+role
+- user/karyawan (my star, my profile, star create)
+
+- supervisor (sama kaya karyawan, sub ordinat)
+
+- committee (trm process (talent-review), talent)

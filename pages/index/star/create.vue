@@ -3,8 +3,10 @@
     <div class="content__wrap">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-3">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item"><a href="#">My STAR</a></li>
+          <li class="breadcrumb-item"><NuxtLink to="/">Home</NuxtLink></li>
+          <li class="breadcrumb-item">
+            <NuxtLink to="/star">My STAR</NuxtLink>
+          </li>
           <li class="breadcrumb-item active" aria-current="page">New</li>
         </ol>
       </nav>
@@ -15,19 +17,22 @@
             <select
               class="form-select"
               id="floatingSelect"
-              aria-label="Floating label select example"
+              v-model="formData.year"
+              :class="{ 'is-invalid': errors.year }"
             >
-              <option selected="">klik untuk memilih</option>
-              <option value="1">2020</option>
-              <option value="2">2021</option>
-              <option value="3">2022</option>
-              <option value="3">2023</option>
-              <option value="3">2024</option>
-              <option value="3">2025</option>
+              <option value="">klik untuk memilih</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
             </select>
             <label for="floatingSelect">Pilih tahun penilaian</label>
+            <div class="invalid-feedback" v-if="errors.year">
+              {{ errors.year }}
+            </div>
           </div>
-          <!-- END : Inline Form -->
         </div>
       </div>
       <section>
@@ -35,66 +40,91 @@
           <div class="col-md-12 mb-3">
             <div class="card h-100">
               <div class="card-body">
-                <div class="form-floating mb-3">
-                  <input
-                    type="text"
-                    class="form-control bg-gray-100"
-                    id="floatingInput"
-                    placeholder="Subject number one"
-                  />
-                  <label for="floatingInput">Subject / Related KPI</label>
-                </div>
-                <!-- Floating label on input field -->
-                <div class="form-floating mb-3">
-                  <textarea
-                    class="form-control bg-gray-100"
-                    placeholder="Leave a comment here"
-                    id="floatingTextarea2"
-                    style="height: 140px"
-                  ></textarea>
-                  <label for="floatingTextarea2">Situation (Situasi)</label>
-                </div>
+                <form @submit.prevent="handleSubmit">
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control bg-gray-100"
+                      id="floatingInput"
+                      placeholder="Subject number one"
+                      v-model="formData.subject"
+                      :class="{ 'is-invalid': errors.subject }"
+                    />
+                    <label for="floatingInput">Subject / Related KPI</label>
+                    <div class="invalid-feedback" v-if="errors.subject">
+                      {{ errors.subject }}
+                    </div>
+                  </div>
 
-                <div class="form-floating mb-3">
-                  <textarea
-                    class="form-control bg-gray-100"
-                    placeholder="Leave a comment here"
-                    id="floatingTextarea2"
-                    style="height: 140px"
-                  ></textarea>
-                  <label for="floatingTextarea2">Task (Tantangan)</label>
-                </div>
+                  <div class="form-floating mb-3">
+                    <textarea
+                      class="form-control bg-gray-100"
+                      placeholder="Describe the situation"
+                      id="situationTextarea"
+                      style="height: 140px"
+                      v-model="formData.situation"
+                      :class="{ 'is-invalid': errors.situation }"
+                    ></textarea>
+                    <label for="situationTextarea">Situation (Situasi)</label>
+                    <div class="invalid-feedback" v-if="errors.situation">
+                      {{ errors.situation }}
+                    </div>
+                  </div>
 
-                <div class="form-floating mb-3">
-                  <textarea
-                    class="form-control bg-gray-100"
-                    placeholder="Leave a comment here"
-                    id="floatingTextarea2"
-                    style="height: 140px"
-                  ></textarea>
-                  <label for="floatingTextarea2">Action (Tindakan)</label>
-                </div>
+                  <div class="form-floating mb-3">
+                    <textarea
+                      class="form-control bg-gray-100"
+                      placeholder="Describe the task"
+                      id="taskTextarea"
+                      style="height: 140px"
+                      v-model="formData.task"
+                      :class="{ 'is-invalid': errors.task }"
+                    ></textarea>
+                    <label for="taskTextarea">Task (Tantangan)</label>
+                    <div class="invalid-feedback" v-if="errors.task">
+                      {{ errors.task }}
+                    </div>
+                  </div>
 
-                <div class="form-floating mb-3">
-                  <textarea
-                    class="form-control bg-gray-100"
-                    placeholder="Leave a comment here"
-                    id="floatingTextarea2"
-                    style="height: 140px"
-                  ></textarea>
-                  <label for="floatingTextarea2">Result (Hasil)</label>
-                </div>
-                <input
-                  id="_dm-fileInput"
-                  class="form-control bg-gray-100"
-                  type="file"
-                />
-                <div class="col-12 pt-4">
-                  <button class="btn btn-primary" type="submit">
-                    Submit form
-                  </button>
-                </div>
-                <!-- END : Floating label on input field -->
+                  <div class="form-floating mb-3">
+                    <textarea
+                      class="form-control bg-gray-100"
+                      placeholder="Describe your actions"
+                      id="actionTextarea"
+                      style="height: 140px"
+                      v-model="formData.action"
+                      :class="{ 'is-invalid': errors.action }"
+                    ></textarea>
+                    <label for="actionTextarea">Action (Tindakan)</label>
+                    <div class="invalid-feedback" v-if="errors.action">
+                      {{ errors.action }}
+                    </div>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <textarea
+                      class="form-control bg-gray-100"
+                      placeholder="Describe the results"
+                      id="resultTextarea"
+                      style="height: 140px"
+                      v-model="formData.result"
+                      :class="{ 'is-invalid': errors.result }"
+                    ></textarea>
+                    <label for="resultTextarea">Result (Hasil)</label>
+                    <div class="invalid-feedback" v-if="errors.result">
+                      {{ errors.result }}
+                    </div>
+                  </div>
+
+                  <div class="col-12 pt-4">
+                    <NuxtLink to="/star" class="btn btn-secondary me-2">
+                      Cancel
+                    </NuxtLink>
+                    <button class="btn btn-primary" type="submit">
+                      Submit form
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -103,5 +133,64 @@
     </div>
   </div>
 </template>
-<script>
+
+<script setup>
+const router = useRouter();
+
+const formData = ref({
+  year: "",
+  subject: "",
+  situation: "",
+  task: "",
+  action: "",
+  result: "",
+  submittedDate: "",
+  status: "Submitted",
+});
+
+const errors = ref({});
+
+const validateForm = () => {
+  const newErrors = {};
+
+  if (!formData.value.year) newErrors.year = "Please select a year";
+  if (!formData.value.subject) newErrors.subject = "Subject is required";
+  if (!formData.value.situation) newErrors.situation = "Situation is required";
+  if (!formData.value.task) newErrors.task = "Task is required";
+  if (!formData.value.action) newErrors.action = "Action is required";
+  if (!formData.value.result) newErrors.result = "Result is required";
+
+  errors.value = newErrors;
+  return Object.keys(newErrors).length === 0;
+};
+
+const handleSubmit = () => {
+  if (!validateForm()) return;
+
+  if (process.client) {
+    // Get existing stars or initialize empty array
+    const existingStars = JSON.parse(localStorage.getItem("stars") || "[]");
+
+    // Create new STAR entry
+    const newStar = {
+      id: Date.now(), // Use timestamp as ID
+      ...formData.value,
+      submittedDate: new Date().toISOString(),
+      narration: `${formData.value.situation}\n\n${formData.value.task}\n\n${formData.value.action}\n\n${formData.value.result}`,
+    };
+
+    // Add to existing stars
+    existingStars.push(newStar);
+
+    // Save back to localStorage
+    localStorage.setItem("stars", JSON.stringify(existingStars));
+
+    // Navigate back to index
+    router.push("/star");
+  }
+};
+
+useHead({
+  title: "Create STAR - TalentReview",
+});
 </script>

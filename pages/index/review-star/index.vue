@@ -1,7 +1,7 @@
 <template>
   <div class="content__boxed">
     <div class="content__wrap">
-      <h2 class="mb-3">My STAR</h2>
+      <h2 class="mb-3">Review Star</h2>
       <div class="card mb-3">
         <div class="card-body">
           <h5 class="card-title">Tahun Penilaian</h5>
@@ -25,33 +25,16 @@
             </select>
             <label for="floatingSelect">Pilih tahun penilaian</label>
           </div>
-          <!-- END : Inline Form -->
         </div>
       </div>
       <section>
         <div class="card">
           <div class="card-header -4 mb-3">
-            <h5 class="card-title mb-3">List of STAR</h5>
+            <h5 class="card-title mb-3">List of STAR Review</h5>
             <div class="row">
-              <!-- Left toolbar -->
-              <div class="col-md-6 d-flex gap-1 align-items-center mb-3">
-                <NuxtLink
-                  :to="{ name: 'index-star-create' }"
-                  class="btn btn-primary hstack gap-2 align-self-center"
-                >
-                  <i class="psi-add fs-5"></i>
-                  <span class="vr"></span>
-                  Add New
-                </NuxtLink>
-                <button class="btn btn-icon btn-outline-light">
-                  <i class="pli-printer fs-5"></i>
-                </button>
-              </div>
-              <!-- END : Left toolbar -->
-
               <!-- Right Toolbar -->
               <div
-                class="col-md-6 d-flex gap-1 align-items-center justify-content-md-end mb-3"
+                class="col-md-6 ms-auto d-flex gap-1 align-items-center justify-content-md-end mb-3"
               >
                 <div class="form-group">
                   <input
@@ -64,74 +47,63 @@
                   />
                 </div>
               </div>
-              <!-- END : Right Toolbar -->
             </div>
           </div>
 
           <div class="card-body">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th class="text-center">Subject/Related KPI</th>
-                  <th>STAR Narration</th>
-                  <th>Submitted Date</th>
-                  <th>Status</th>
-                  <th>Year</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="star in filteredStars" :key="star.id">
-                  <td>
-                    <a
-                      class="btn-link"
-                      href="#"
-                      @click.prevent="viewStar(star)"
-                    >
-                      {{ star.subject }}
-                    </a>
-                  </td>
-                  <td>
-                    <div class="text-truncate" style="max-width: 300px">
-                      {{ star.narration }}
-                    </div>
-                  </td>
-                  <td>
-                    <span class="text-muted">
-                      <i class="demo-pli-clock"></i>
-                      {{ formatDate(star.submittedDate) }}
-                    </span>
-                  </td>
-                  <td class="fs-5">
-                    <div
-                      class="badge d-block"
-                      :class="getStatusClass(star.status)"
-                    >
-                      {{ star.status }}
-                    </div>
-                  </td>
-                  <td>{{ star.year }}</td>
-                  <td>
-                    <div class="btn-group btn-group-sm">
-                      <button
-                        class="btn btn-outline-primary"
-                        @click="editStar(star)"
-                        title="Edit"
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Employee Name</th>
+                    <th>Subject/Related KPI</th>
+                    <th>STAR Narration</th>
+                    <th>Submitted Date</th>
+                    <th>Status</th>
+                    <th>Year</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="star in filteredStars" :key="star.id">
+                    <td>{{ star.employeeName }}</td>
+                    <td>
+                      <a
+                        class="btn-link"
+                        href="#"
+                        @click.prevent="viewStar(star)"
                       >
-                        <i class="pli-pencil"></i>
-                      </button>
-                      <button
-                        class="btn btn-outline-danger"
-                        @click="deleteStar(star.id)"
-                        title="Delete"
+                        {{ star.subject }}
+                      </a>
+                    </td>
+                    <td>
+                      <div class="text-truncate" style="max-width: 300px">
+                        {{ star.narration }}
+                      </div>
+                    </td>
+                    <td>
+                      <span class="text-muted">
+                        <i class="demo-pli-clock"></i>
+                        {{ formatDate(star.submittedDate) }}
+                      </span>
+                    </td>
+                    <td class="fs-5">
+                      <NuxtLink
+                        :to="`/review-star/${star.id}/edit`"
+                        class="text-decoration-none"
                       >
-                        <i class="pli-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                        <div
+                          class="badge d-block cursor-pointer"
+                          :class="getStatusClass(star.status)"
+                        >
+                          {{ star.status }}
+                        </div>
+                      </NuxtLink>
+                    </td>
+                    <td>{{ star.year }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
             <nav
               v-if="totalPages > 1"
@@ -183,18 +155,53 @@ const filteredStars = ref([]);
 const currentPage = ref(1);
 const itemsPerPage = 10;
 
-// Load STAR data from localStorage
+// Load STAR data from localStorage with mockup data if empty
 const loadStars = () => {
-  try {
-    const savedStars = localStorage.getItem("stars");
-    if (savedStars) {
-      stars.value = JSON.parse(savedStars);
-    } else {
+  if (process.client) {
+    try {
+      const savedStars = localStorage.getItem("stars-review");
+      if (savedStars) {
+        stars.value = JSON.parse(savedStars);
+      } else {
+        // Mockup data with realistic content
+        stars.value = [
+          {
+            id: 1,
+            employeeName: "John Anderson",
+            subject: "Increased Team Productivity",
+            narration:
+              "Situation: Team was struggling with meeting sprint deadlines. Task: Implement new agile methodologies. Action: Conducted workshops and introduced daily standups. Result: 40% improvement in sprint completion rate.",
+            submittedDate: "2023-05-15",
+            status: "Approved",
+            year: "2023",
+          },
+          {
+            id: 2,
+            employeeName: "Sarah Mitchell",
+            subject: "Customer Support Enhancement",
+            narration:
+              "Situation: High customer complaint rate. Task: Reduce response time and improve satisfaction. Action: Implemented new ticketing system and trained team. Result: 65% reduction in complaint resolution time.",
+            submittedDate: "2023-06-01",
+            status: "Need Revised",
+            year: "2023",
+          },
+          {
+            id: 3,
+            employeeName: "Michael Chang",
+            subject: "Cost Optimization Project",
+            narration:
+              "Situation: Department overspending on software licenses. Task: Audit and optimize software usage. Action: Conducted usage analysis and negotiated with vendors. Result: Annual savings of $50,000.",
+            submittedDate: "2023-05-28",
+            status: "Submitted",
+            year: "2023",
+          },
+        ];
+        localStorage.setItem("stars-review", JSON.stringify(stars.value));
+      }
+    } catch (error) {
+      console.error("Error loading STAR review data:", error);
       stars.value = [];
     }
-  } catch (error) {
-    console.error("Error loading STAR data:", error);
-    stars.value = [];
   }
   filterStars();
 };
@@ -203,16 +210,15 @@ const loadStars = () => {
 const filterStars = () => {
   let filtered = [...stars.value];
 
-  // Filter by year
   if (selectedYear.value) {
     filtered = filtered.filter((star) => star.year === selectedYear.value);
   }
 
-  // Filter by search query
   if (searchQuery.value) {
     const query = searchQuery.value.toLowerCase();
     filtered = filtered.filter(
       (star) =>
+        star.employeeName.toLowerCase().includes(query) ||
         star.subject.toLowerCase().includes(query) ||
         star.narration.toLowerCase().includes(query) ||
         star.status.toLowerCase().includes(query)
@@ -220,7 +226,7 @@ const filterStars = () => {
   }
 
   filteredStars.value = filtered;
-  currentPage.value = 1; // Reset to first page when filtering
+  currentPage.value = 1;
 };
 
 // Pagination computed properties
@@ -238,26 +244,6 @@ const visiblePages = computed(() => {
   }
   return pages;
 });
-
-const paginatedStars = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage;
-  const end = start + itemsPerPage;
-  return filteredStars.value.slice(start, end);
-});
-
-// Update filteredStars to use paginated data
-watch([selectedYear, searchQuery, currentPage], () => {
-  if (selectedYear.value || searchQuery.value) {
-    filterStars();
-  }
-});
-
-// Pagination methods
-const changePage = (page) => {
-  if (page >= 1 && page <= totalPages.value) {
-    currentPage.value = page;
-  }
-};
 
 // Utility methods
 const formatDate = (dateString) => {
@@ -285,45 +271,31 @@ const getStatusClass = (status) => {
   }
 };
 
-// Action methods
+// View method
 const viewStar = (star) => {
-  // Navigate to view page or show modal
-  navigateTo(`/star/${star.id}`);
+  navigateTo(`/review-star/${star.id}`);
 };
 
-const editStar = (star) => {
-  // Navigate to edit page
-  navigateTo(`/star/${star.id}/edit`);
-};
-
-const deleteStar = (starId) => {
-  if (confirm("Are you sure you want to delete this STAR?")) {
-    stars.value = stars.value.filter((star) => star.id !== starId);
-
-    // Update localStorage
-    if (process.client) {
-      localStorage.setItem("stars", JSON.stringify(stars.value));
-    }
-
-    filterStars();
+// Pagination methods
+const changePage = (page) => {
+  if (page >= 1 && page <= totalPages.value) {
+    currentPage.value = page;
   }
 };
 
-// Initialize on mount
+// Initialize
 onMounted(() => {
   loadStars();
 });
 
-// Update filteredStars to show paginated results
-watch(
-  [filteredStars, currentPage],
-  () => {
-    // This will trigger reactivity for the template
-  },
-  { immediate: true }
-);
+// Watch for changes
+watch([selectedYear, searchQuery, currentPage], () => {
+  if (selectedYear.value || searchQuery.value) {
+    filterStars();
+  }
+});
 
 useHead({
-  title: "My STAR - TalentReview",
+  title: "Review STAR - TalentReview",
 });
 </script>

@@ -10,6 +10,7 @@ export const useAuth = () => {
     const mockUser = {
       id: "1237678",
       name: "Hari Prasetyo Tri Wicaksono",
+      username: credentials.username,
       position: "Manager Channel Digitalization Operation",
       unit: "PRL JAB 20",
       company: "Pertamina Patra Niaga",

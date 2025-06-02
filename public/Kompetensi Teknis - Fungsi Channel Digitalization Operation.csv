@@ -1,0 +1,159 @@
+No, Action ,ID Position, Nama Jabatan , Kode Kompetensi ,Proficiency Level,"Start Date
+(DDMMYYYY)                                                                                                                                                                                             ","End Date
+(DDMMYYYY)  ", Kompetensi Teknis ,Keterangan Kompetensi
+1,,30313889,Manager Channel Digitalization Operation, Q  41003926 ,2,,, HSSE General , Mandatory 
+2,,30313889,Manager Channel Digitalization Operation, Q  41003951 ,2,,, HC Integrated , Mandatory 
+3,,30313889,Manager Channel Digitalization Operation, Q  41003952 ,2,,, Strategic & Business Management , Mandatory 
+4,,30313889,Manager Channel Digitalization Operation, Q  41003953 ,2,,, Risk Fundamental , Mandatory 
+5,,30313889,Manager Channel Digitalization Operation, Q  41003954 ,2,,, Digital & Analytic Insight , Mandatory 
+6,,30313889,Manager Channel Digitalization Operation, Q  41003819 ,2,,, Marketing Strategy and Planning ,General
+7,,30313889,Manager Channel Digitalization Operation, Q  41003825 ,2,,, Customer Relation Management ,General
+8,,30313889,Manager Channel Digitalization Operation, Q  41003829 ,2,,, Sales Strategy and Planning ,General
+9,,30313889,Manager Channel Digitalization Operation, Q  41003448 ,2,,, Stakeholder Management ,Specific
+10,,30313889,Manager Channel Digitalization Operation, Q  41003824 ,3,,, Channel Management ,Specific
+11,,30313889,Manager Channel Digitalization Operation, Q  41003695 ,3,,, Data Analytics ,Specific
+12,,30313889,Manager Channel Digitalization Operation, Q  41003667 ,3,,, Data Engineering ,Specific
+13,,30313889,Manager Channel Digitalization Operation, Q  41003706 ,3,,, Budgeting ,Specific
+14,,30313889,Manager Channel Digitalization Operation, Q  41003474 ,3,,, Sourcing Procurement ,Specific
+15,,30313889,Manager Channel Digitalization Operation, Q  41003494 ,3,,, Standardization Management System ,Specific
+16,,30313889,Manager Channel Digitalization Operation, Q  41003670 ,2,,, ICT Business Need Analysis ,Specific
+1,,30313894,Sr Officer I Digital Operation, Q  41003926 ,2,,, HSSE General , Mandatory 
+2,,30313894,Sr Officer I Digital Operation, Q  41003953 ,2,,, Risk Fundamental , Mandatory 
+3,,30313894,Sr Officer I Digital Operation, Q  41003819 ,2,,, Marketing Strategy and Planning ,General
+4,,30313894,Sr Officer I Digital Operation, Q  41003825 ,2,,, Customer Relation Management ,General
+5,,30313894,Sr Officer I Digital Operation, Q  41003829 ,2,,, Sales Strategy and Planning ,General
+6,,30313894,Sr Officer I Digital Operation, Q  41003824 ,3,,, Channel Management ,Specific
+7,,30313894,Sr Officer I Digital Operation, Q  41003695 ,3,,, Data Analytics ,Specific
+8,,30313894,Sr Officer I Digital Operation, Q  41003484 ,2,,, Compliance Regulatory ,Specific
+9,,30313894,Sr Officer I Digital Operation, Q  41003448 ,1,,, Stakeholder Management ,Specific
+10,,30313894,Sr Officer I Digital Operation, Q  41003670 ,2,,, ICT Business Need Analysis ,Specific
+11,,30313894,Sr Officer I Digital Operation, Q  41003667 ,3,,, Data Engineering ,Specific
+12,,30313894,Sr Officer I Digital Operation, Q  41003474 ,2,,, Sourcing Procurement ,Specific
+13,,30313894,Sr Officer I Digital Operation, Q  41003494 ,2,,, Standardization Management System ,Specific
+1,,30313890,Sr Officer II Digitalization Project, Q  41003926 ,2,,, HSSE General , Mandatory 
+2,,30313890,Sr Officer II Digitalization Project, Q  41003953 ,2,,, Risk Fundamental , Mandatory 
+3,,30313890,Sr Officer II Digitalization Project, Q  41003819 ,2,,, Marketing Strategy and Planning ,General
+4,,30313890,Sr Officer II Digitalization Project, Q  41003825 ,2,,, Customer Relation Management ,General
+5,,30313890,Sr Officer II Digitalization Project, Q  41003829 ,2,,, Sales Strategy and Planning ,General
+6,,30313890,Sr Officer II Digitalization Project, Q  41003824 ,3,,, Channel Management ,Specific
+7,,30313890,Sr Officer II Digitalization Project, Q  41003695 ,3,,, Data Analytics ,Specific
+8,,30313890,Sr Officer II Digitalization Project, Q  41003448 ,2,,, Stakeholder Management ,Specific
+9,,30313890,Sr Officer II Digitalization Project, Q  41003667 ,3,,, Data Engineering ,Specific
+10,,30313890,Sr Officer II Digitalization Project, Q  41003706 ,2,,, Budgeting ,Specific
+11,,30313890,Sr Officer II Digitalization Project, Q  41003474 ,2,,, Sourcing Procurement ,Specific
+12,,30313890,Sr Officer II Digitalization Project, Q  41003670 ,2,,, ICT Business Need Analysis ,Specific
+13,,30313890,Sr Officer II Digitalization Project, Q  41003521 ,2,,, Project Planning Management ,Specific
+14,,30313890,Sr Officer II Digitalization Project, Q  41003520 ,2,,, Project Monitoring and Control Management ,Specific
+1,,30313898,Sr Officer I Support, Q  41003926 ,2,,, HSSE General , Mandatory 
+2,,30313898,Sr Officer I Support, Q  41003953 ,2,,, Risk Fundamental , Mandatory 
+3,,30313898,Sr Officer I Support, Q  41003819 ,1,,, Marketing Strategy and Planning ,General
+4,,30313898,Sr Officer I Support, Q  41003825 ,1,,, Customer Relation Management ,General
+5,,30313898,Sr Officer I Support, Q  41003829 ,1,,, Sales Strategy and Planning ,General
+6,,30313898,Sr Officer I Support, Q  41003824 ,3,,, Channel Management ,Specific
+7,,30313898,Sr Officer I Support, Q  41003695 ,2,,, Data Analytics ,Specific
+8,,30313898,Sr Officer I Support, Q  41003448 ,2,,, Stakeholder Management ,Specific
+9,,30313898,Sr Officer I Support, Q  41003667 ,2,,, Data Engineering ,Specific
+10,,30313898,Sr Officer I Support, Q  41003827 ,2,,, Sales Administration ,Specific
+11,,30313898,Sr Officer I Support, Q  41003706 ,2,,, Budgeting ,Specific
+12,,30313898,Sr Officer I Support, Q  41003474 ,2,,, Sourcing Procurement ,Specific
+13,,30313898,Sr Officer I Support, Q  41003494 ,2,,, Standardization Management System ,Specific
+1,,30313895,Officer II Monitoring & Evaluation, Q  41003926 ,1,,, HSSE General , Mandatory 
+2,,30313895,Officer II Monitoring & Evaluation, Q  41003953 ,1,,, Risk Fundamental , Mandatory 
+3,,30313895,Officer II Monitoring & Evaluation, Q  41003819 ,2,,, Marketing Strategy and Planning ,General
+4,,30313895,Officer II Monitoring & Evaluation, Q  41003825 ,2,,, Customer Relation Management ,General
+5,,30313895,Officer II Monitoring & Evaluation, Q  41003829 ,2,,, Sales Strategy and Planning ,General
+6,,30313895,Officer II Monitoring & Evaluation, Q  41003824 ,2,,, Channel Management ,Specific
+7,,30313895,Officer II Monitoring & Evaluation, Q  41003695 ,2,,, Data Analytics ,Specific
+8,,30313895,Officer II Monitoring & Evaluation, Q  41003448 ,2,,, Stakeholder Management ,Specific
+9,,30313895,Officer II Monitoring & Evaluation, Q  41003670 ,2,,, ICT Business Need Analysis ,Specific
+10,,30313895,Officer II Monitoring & Evaluation, Q  41003667 ,2,,, Data Engineering ,Specific
+11,,30313895,Officer II Monitoring & Evaluation, Q  41003706 ,2,,, Budgeting ,Specific
+12,,30313895,Officer II Monitoring & Evaluation, Q  41003474 ,2,,, Sourcing Procurement ,Specific
+13,,30313895,Officer II Monitoring & Evaluation, Q  41003494 ,2,,, Standardization Management System ,Specific
+1,,30313896,Jr Officer I Monitoring & Evaluation, Q  41003926 ,1,,, HSSE General , Mandatory 
+2,,30313896,Jr Officer I Monitoring & Evaluation, Q  41003953 ,1,,, Risk Fundamental , Mandatory 
+3,,30313896,Jr Officer I Monitoring & Evaluation, Q  41003819 ,1,,, Marketing Strategy and Planning ,General
+4,,30313896,Jr Officer I Monitoring & Evaluation, Q  41003825 ,1,,, Customer Relation Management ,General
+5,,30313896,Jr Officer I Monitoring & Evaluation, Q  41003829 ,1,,, Sales Strategy and Planning ,General
+6,,30313896,Jr Officer I Monitoring & Evaluation, Q  41003824 ,1,,, Channel Management ,Specific
+7,,30313896,Jr Officer I Monitoring & Evaluation, Q  41003695 ,2,,, Data Analytics ,Specific
+8,,30313896,Jr Officer I Monitoring & Evaluation, Q  41003448 ,1,,, Stakeholder Management ,Specific
+9,,30313896,Jr Officer I Monitoring & Evaluation, Q  41003670 ,1,,, ICT Business Need Analysis ,Specific
+10,,30313896,Jr Officer I Monitoring & Evaluation, Q  41003667 ,1,,, Data Engineering ,Specific
+11,,30313896,Jr Officer I Monitoring & Evaluation, Q  41003706 ,1,,, Budgeting ,Specific
+12,,30313896,Jr Officer I Monitoring & Evaluation, Q  41003474 ,1,,, Sourcing Procurement ,Specific
+13,,30313896,Jr Officer I Monitoring & Evaluation, Q  41003494 ,1,,, Standardization Management System ,Specific
+1,,30313897,Officer II Data Compliance, Q  41003926 ,1,,, HSSE General , Mandatory 
+2,,30313897,Officer II Data Compliance, Q  41003953 ,1,,, Risk Fundamental , Mandatory 
+3,,30313897,Officer II Data Compliance, Q  41003819 ,1,,, Marketing Strategy and Planning ,General
+4,,30313897,Officer II Data Compliance, Q  41003825 ,1,,, Customer Relation Management ,General
+5,,30313897,Officer II Data Compliance, Q  41003829 ,1,,, Sales Strategy and Planning ,General
+6,,30313897,Officer II Data Compliance, Q  41003824 ,2,,, Channel Management ,Specific
+7,,30313897,Officer II Data Compliance, Q  41003827 ,2,,, Sales Administration ,Specific
+8,,30313897,Officer II Data Compliance, Q  41003695 ,3,,, Data Analytics ,Specific
+9,,30313897,Officer II Data Compliance, Q  41003484 ,2,,, Compliance Regulatory ,Specific
+10,,30313897,Officer II Data Compliance, Q  41003448 ,1,,, Stakeholder Management ,Specific
+11,,30313897,Officer II Data Compliance, Q  41003667 ,3,,, Data Engineering ,Specific
+12,,30313897,Officer II Data Compliance, Q  41003494 ,2,,, Standardization Management System ,Specific
+1,,30313891,Officer II Standard & Planning, Q  41003926 ,1,,, HSSE General , Mandatory 
+2,,30313891,Officer II Standard & Planning, Q  41003953 ,1,,, Risk Fundamental , Mandatory 
+3,,30313891,Officer II Standard & Planning, Q  41003819 ,1,,, Marketing Strategy and Planning ,General
+4,,30313891,Officer II Standard & Planning, Q  41003825 ,2,,, Customer Relation Management ,General
+5,,30313891,Officer II Standard & Planning, Q  41003829 ,1,,, Sales Strategy and Planning ,General
+6,,30313891,Officer II Standard & Planning, Q  41003824 ,2,,, Channel Management ,Specific
+7,,30313891,Officer II Standard & Planning, Q  41003695 ,2,,, Data Analytics ,Specific
+8,,30313891,Officer II Standard & Planning, Q  41003667 ,2,,, Data Engineering ,Specific
+9,,30313891,Officer II Standard & Planning, Q  41003706 ,1,,, Budgeting ,Specific
+10,,30313891,Officer II Standard & Planning, Q  41003474 ,1,,, Sourcing Procurement ,Specific
+11,,30313891,Officer II Standard & Planning, Q  41003670 ,1,,, ICT Business Need Analysis ,Specific
+12,,30313891,Officer II Standard & Planning, Q  41003494 ,2,,, Standardization Management System ,Specific
+1,,30313892,Officer II Roll Out, Q  41003926 ,1,,, HSSE General , Mandatory 
+2,,30313892,Officer II Roll Out, Q  41003953 ,1,,, Risk Fundamental , Mandatory 
+3,,30313892,Officer II Roll Out, Q  41003819 ,1,,, Marketing Strategy and Planning ,General
+4,,30313892,Officer II Roll Out, Q  41003825 ,1,,, Customer Relation Management ,General
+5,,30313892,Officer II Roll Out, Q  41003829 ,1,,, Sales Strategy and Planning ,General
+6,,30313892,Officer II Roll Out, Q  41003824 ,2,,, Channel Management ,Specific
+7,,30313892,Officer II Roll Out, Q  41003695 ,2,,, Data Analytics ,Specific
+8,,30313892,Officer II Roll Out, Q  41003448 ,2,,, Stakeholder Management ,Specific
+9,,30313892,Officer II Roll Out, Q  41003667 ,2,,, Data Engineering ,Specific
+10,,30313892,Officer II Roll Out, Q  41003706 ,1,,, Budgeting ,Specific
+11,,30313892,Officer II Roll Out, Q  41003474 ,1,,, Sourcing Procurement ,Specific
+12,,30313892,Officer II Roll Out, Q  41003494 ,1,,, Standardization Management System ,Specific
+1,,30313893,Jr Officer II Roll Out, Q  41003926 ,1,,, HSSE General , Mandatory 
+2,,30313893,Jr Officer II Roll Out, Q  41003953 ,1,,, Risk Fundamental , Mandatory 
+3,,30313893,Jr Officer II Roll Out, Q  41003819 ,1,,, Marketing Strategy and Planning ,General
+4,,30313893,Jr Officer II Roll Out, Q  41003825 ,1,,, Customer Relation Management ,General
+5,,30313893,Jr Officer II Roll Out, Q  41003829 ,1,,, Sales Strategy and Planning ,General
+6,,30313893,Jr Officer II Roll Out, Q  41003824 ,2,,, Channel Management ,Specific
+7,,30313893,Jr Officer II Roll Out, Q  41003695 ,1,,, Data Analytics ,Specific
+8,,30313893,Jr Officer II Roll Out, Q  41003448 ,2,,, Stakeholder Management ,Specific
+9,,30313893,Jr Officer II Roll Out, Q  41003667 ,1,,, Data Engineering ,Specific
+10,,30313893,Jr Officer II Roll Out, Q  41003706 ,1,,, Budgeting ,Specific
+11,,30313893,Jr Officer II Roll Out, Q  41003474 ,1,,, Sourcing Procurement ,Specific
+12,,30313893,Jr Officer II Roll Out, Q  41003494 ,1,,, Standardization Management System ,Specific
+1,,30313899,Officer I Data Analyst, Q  41003926 ,1,,, HSSE General , Mandatory 
+2,,30313899,Officer I Data Analyst, Q  41003953 ,1,,, Risk Fundamental , Mandatory 
+3,,30313899,Officer I Data Analyst, Q  41003819 ,1,,, Marketing Strategy and Planning ,General
+4,,30313899,Officer I Data Analyst, Q  41003825 ,1,,, Customer Relation Management ,General
+5,,30313899,Officer I Data Analyst, Q  41003829 ,1,,, Sales Strategy and Planning ,General
+6,,30313899,Officer I Data Analyst, Q  41003824 ,2,,, Channel Management ,Specific
+7,,30313899,Officer I Data Analyst, Q  41003695 ,3,,, Data Analytics ,Specific
+8,,30313899,Officer I Data Analyst, Q  41003827 ,2,,, Sales Administration ,Specific
+9,,30313899,Officer I Data Analyst, Q  41003667 ,3,,, Data Engineering ,Specific
+10,,30313899,Officer I Data Analyst, Q  41003706 ,1,,, Budgeting ,Specific
+11,,30313899,Officer I Data Analyst, Q  41003474 ,2,,, Sourcing Procurement ,Specific
+12,,30313899,Officer I Data Analyst, Q  41003494 ,1,,, Standardization Management System ,Specific
+1,,30313900,Officer II Data Enhancement, Q  41003926 ,1,,, HSSE General , Mandatory 
+2,,30313900,Officer II Data Enhancement, Q  41003953 ,1,,, Risk Fundamental , Mandatory 
+3,,30313900,Officer II Data Enhancement, Q  41003819 ,1,,, Marketing Strategy and Planning ,General
+4,,30313900,Officer II Data Enhancement, Q  41003825 ,1,,, Customer Relation Management ,General
+5,,30313900,Officer II Data Enhancement, Q  41003829 ,1,,, Sales Strategy and Planning ,General
+6,,30313900,Officer II Data Enhancement, Q  41003824 ,2,,, Channel Management ,Specific
+7,,30313900,Officer II Data Enhancement, Q  41003695 ,3,,, Data Analytics ,Specific
+8,,30313900,Officer II Data Enhancement, Q  41003484 ,2,,, Compliance Regulatory ,Specific
+9,,30313900,Officer II Data Enhancement, Q  41003448 ,1,,, Stakeholder Management ,Specific
+10,,30313900,Officer II Data Enhancement, Q  41003827 ,2,,, Sales Administration ,Specific
+11,,30313900,Officer II Data Enhancement, Q  41003667 ,3,,, Data Engineering ,Specific
+12,,30313900,Officer II Data Enhancement, Q  41003494 ,2,,, Standardization Management System ,Specific
+13,,30313900,Officer II Data Enhancement, Q  41003696 ,2,,, Database Modelling and Design ,Specific
+14,,30313900,Officer II Data Enhancement, Q  41003676 ,2,,, Big Data Analytics ,Specific
