@@ -8,7 +8,7 @@ export const useUserRole = () => {
     if (credentials) {
       const { username } = JSON.parse(credentials);
       console.log(username)
-      switch (username) {
+      switch (username.toLowerCase()) {
         case "supervisor":
           userRole.value = "supervisor";
           break;
