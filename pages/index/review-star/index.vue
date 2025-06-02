@@ -56,24 +56,19 @@
                 <thead>
                   <tr>
                     <th>Employee Name</th>
+                    <th>Year</th>
                     <th>Subject/Related KPI</th>
                     <th>STAR Narration</th>
                     <th>Submitted Date</th>
                     <th>Status</th>
-                    <th>Year</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr v-for="star in filteredStars" :key="star.id">
                     <td>{{ star.employeeName }}</td>
+                    <td>{{ star.year }}</td>
                     <td>
-                      <a
-                        class="btn-link"
-                        href="#"
-                        @click.prevent="viewStar(star)"
-                      >
-                        {{ star.subject }}
-                      </a>
+                      {{ star.subject }}
                     </td>
                     <td>
                       <div class="text-truncate" style="max-width: 300px">
@@ -99,7 +94,6 @@
                         </div>
                       </NuxtLink>
                     </td>
-                    <td>{{ star.year }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -163,38 +157,64 @@ const loadStars = () => {
       if (savedStars) {
         stars.value = JSON.parse(savedStars);
       } else {
-        // Mockup data with realistic content
+        // Mockup data with split STAR fields and skills
         stars.value = [
           {
             id: 1,
             employeeName: "John Anderson",
             subject: "Increased Team Productivity",
-            narration:
-              "Situation: Team was struggling with meeting sprint deadlines. Task: Implement new agile methodologies. Action: Conducted workshops and introduced daily standups. Result: 40% improvement in sprint completion rate.",
+            situation: "Team was struggling with meeting sprint deadlines",
+            task: "Implement new agile methodologies",
+            action: "Conducted workshops and introduced daily standups",
+            result: "40% improvement in sprint completion rate",
+            narration: "Situation: Team was struggling with meeting sprint deadlines\n\nTask: Implement new agile methodologies\n\nAction: Conducted workshops and introduced daily standups\n\nResult: 40% improvement in sprint completion rate",
             submittedDate: "2023-05-15",
             status: "Approved",
             year: "2023",
+            skills: ["Leadership", "Agile Methodologies", "Team Management", "Process Improvement"]
           },
           {
             id: 2,
             employeeName: "Sarah Mitchell",
             subject: "Customer Support Enhancement",
-            narration:
-              "Situation: High customer complaint rate. Task: Reduce response time and improve satisfaction. Action: Implemented new ticketing system and trained team. Result: 65% reduction in complaint resolution time.",
+            situation: "High customer complaint rate",
+            task: "Reduce response time and improve satisfaction",
+            action: "Implemented new ticketing system and trained team",
+            result: "65% reduction in complaint resolution time",
+            narration: "Situation: High customer complaint rate\n\nTask: Reduce response time and improve satisfaction\n\nAction: Implemented new ticketing system and trained team\n\nResult: 65% reduction in complaint resolution time",
             submittedDate: "2023-06-01",
             status: "Need Revised",
             year: "2023",
+            skills: ["Customer Service", "System Implementation", "Training & Development"]
           },
           {
             id: 3,
             employeeName: "Michael Chang",
             subject: "Cost Optimization Project",
-            narration:
-              "Situation: Department overspending on software licenses. Task: Audit and optimize software usage. Action: Conducted usage analysis and negotiated with vendors. Result: Annual savings of $50,000.",
+            situation: "Department overspending on software licenses",
+            task: "Audit and optimize software usage",
+            action: "Conducted usage analysis and negotiated with vendors",
+            result: "Annual savings of $50,000",
+            narration: "Situation: Department overspending on software licenses\n\nTask: Audit and optimize software usage\n\nAction: Conducted usage analysis and negotiated with vendors\n\nResult: Annual savings of $50,000",
             submittedDate: "2023-05-28",
             status: "Submitted",
             year: "2023",
+            skills: ["Negotiation", "Cost Management", "Vendor Management", "Analytics"]
           },
+          {
+            id: 4,
+            employeeName: "Dewi Kusuma",
+            subject: "Digital Transformation Initiative",
+            situation: "Manual processes causing delays in reporting",
+            task: "Digitize key business processes",
+            action: "Led cross-functional team to implement digital solutions",
+            result: "Reduced reporting time by 75%",
+            narration: "Situation: Manual processes causing delays in reporting\n\nTask: Digitize key business processes\n\nAction: Led cross-functional team to implement digital solutions\n\nResult: Reduced reporting time by 75%",
+            submittedDate: "2023-07-15",
+            status: "Approved",
+            year: "2023",
+            skills: ["Digital Transformation", "Change Management", "Project Management", "Process Automation"]
+          }
         ];
         localStorage.setItem("stars-review", JSON.stringify(stars.value));
       }
@@ -221,7 +241,8 @@ const filterStars = () => {
         star.employeeName.toLowerCase().includes(query) ||
         star.subject.toLowerCase().includes(query) ||
         star.narration.toLowerCase().includes(query) ||
-        star.status.toLowerCase().includes(query)
+        star.status.toLowerCase().includes(query) ||
+        star.skills.some(skill => skill.toLowerCase().includes(query))
     );
   }
 

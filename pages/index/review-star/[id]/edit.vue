@@ -4,14 +4,14 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-3">
           <li class="breadcrumb-item"><NuxtLink to="/">Home</NuxtLink></li>
-          <li class="breadcrumb-item"><NuxtLink to="/review-star">Review STAR</NuxtLink></li>
+          <li class="breadcrumb-item">
+            <NuxtLink to="/review-star">Review STAR</NuxtLink>
+          </li>
           <li class="breadcrumb-item active" aria-current="page">Review</li>
         </ol>
       </nav>
 
-      <div v-if="!star" class="alert alert-danger">
-        STAR entry not found
-      </div>
+      <div v-if="!star" class="alert alert-danger">STAR entry not found</div>
 
       <template v-else>
         <div class="card mb-3">
@@ -109,6 +109,19 @@
                     <label for="employeeInput">Employee Name</label>
                   </div>
 
+                  <div class="form-group mb-3">
+                    <label for="employeeInput">Competencies</label>
+                    <Multiselect
+                      label="Competencies"
+                      v-model="star.skills"
+                      mode="tags"
+                      :disabled="star.status !== 'Submitted'"
+                      :options="availableSkills"
+                      :searchable="true"
+                      placeholder="Select skills"
+                    />
+                  </div>
+
                   <div class="form-floating mb-3">
                     <textarea
                       class="form-control"
@@ -154,54 +167,100 @@
 </template>
 
 <script setup>
-const route = useRoute()
-const router = useRouter()
-const star = ref(null)
-const comments = ref('')
+import "@vueform/multiselect/themes/default.css";
+import Multiselect from "@vueform/multiselect";
+
+const route = useRoute();
+const router = useRouter();
+const star = ref(null);
+const comments = ref("");
+
+// Add available skills options
+const availableSkills = [
+  "Leadership",
+  "Agile Methodologies",
+  "Team Management",
+  "Process Improvement",
+  "Project Management",
+  "Digital Transformation",
+  "Change Management",
+  "System Implementation",
+  "Training & Development",
+  "Customer Service",
+  "Negotiation",
+  "Cost Management",
+  "Vendor Management",
+  "Analytics",
+  "Process Automation",
+];
 
 // Load STAR data on mount
 onMounted(() => {
   if (process.client) {
-    const stars = JSON.parse(localStorage.getItem('stars-review') || '[]')
-    star.value = stars.find(s => s.id.toString() === route.params.id)
-    
+    const stars = JSON.parse(localStorage.getItem("stars-review") || "[]");
+    star.value = stars.find((s) => s.id.toString() === route.params.id);
+
     if (star.value) {
       // Split narration into STAR components if needed
-      const narrationParts = star.value.narration?.split('\n\n') || []
-      
+      const narrationParts = star.value.narration?.split("\n\n") || [];
+
       star.value = {
         ...star.value,
-        situation: narrationParts[0]?.replace('Situation: ', '') || '',
-        task: narrationParts[1]?.replace('Task: ', '') || '',
-        action: narrationParts[2]?.replace('Action: ', '') || '',
-        result: narrationParts[3]?.replace('Result: ', '') || '',
-      }
-      
-      comments.value = star.value.comments || ''
+        situation: narrationParts[0]?.replace("Situation: ", "") || "",
+        task: narrationParts[1]?.replace("Task: ", "") || "",
+        action: narrationParts[2]?.replace("Action: ", "") || "",
+        result: narrationParts[3]?.replace("Result: ", "") || "",
+      };
+
+      comments.value = star.value.comments || "";
     }
   }
-})
+});
 
+// Update the updateStatus function to handle array of skills
 const updateStatus = (newStatus) => {
   if (process.client && star.value) {
-    const stars = JSON.parse(localStorage.getItem('stars-review') || '[]')
-    const index = stars.findIndex(s => s.id.toString() === route.params.id)
-    
+    const stars = JSON.parse(localStorage.getItem("stars-review") || "[]");
+    const index = stars.findIndex((s) => s.id.toString() === route.params.id);
+
     if (index !== -1) {
       stars[index] = {
         ...stars[index],
         status: newStatus,
         comments: comments.value,
-        reviewedDate: new Date().toISOString()
-      }
-      
-      localStorage.setItem('stars-review', JSON.stringify(stars))
-      router.push('/review-star')
+        skills: star.value.skills, // Ensure skills array is saved
+        reviewedDate: new Date().toISOString(),
+      };
+
+      localStorage.setItem("stars-review", JSON.stringify(stars));
+      router.push("/review-star");
     }
   }
-}
+};
 
 useHead({
-  title: 'Review STAR - TalentReview'
-})
+  title: "Review STAR - TalentReview",
+});
 </script>
+
+<style>
+.multiselect {
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+}
+
+.multiselect.is-disabled {
+  background-color: #e9ecef;
+  opacity: 1;
+}
+
+.multiselect-option.is-selected {
+  background: #0d6efd;
+  color: white;
+}
+
+.multiselect-option.is-pointed {
+  background: #e9ecef;
+  color: #212529;
+}
+</style>
